@@ -1,7 +1,9 @@
-/** @type {import('next').NextConfig} */
+// next.config.mjs
 const nextConfig = {
+    // konfigurasi Next.js di sini
     reactStrictMode: true,
+    // Tambahkan opsi lain jika diperlukan
   }
   
-  module.exports = nextConfig;
+  export default nextConfig;
   
