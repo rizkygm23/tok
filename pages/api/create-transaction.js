@@ -1,4 +1,5 @@
 import midtransClient from 'midtrans-client';
+import { supabase } from '../../lib/supabase';
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
@@ -20,7 +21,12 @@ export default async function handler(req, res) {
 
     try {
       const transaction = await snap.createTransaction(parameter);
-      res.status(200).json({ redirectUrl: transaction.redirect_url });
+      await res.status(200).json({  redirectUrl:transaction.redirect_url});
+      const { error } = await supabase
+        .from('transaction')        
+        .update({ status: 'Success' })
+        .eq('order_id', orderId);
+      
     } catch (error) {
       res.status(500).json({ error: 'Something went wrong', details: error });
     }

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { supabase } from '../lib/supabase';
 
+
 export default function ProductCard({ product }) {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [transactionData, setTransactionData] = useState({
@@ -53,6 +54,7 @@ export default function ProductCard({ product }) {
           notes: notes,
           total_amount: total,
           status: 'pending',
+          
         },
       ]);
 
@@ -94,7 +96,12 @@ export default function ProductCard({ product }) {
       const responseData = await response.json();
       if (responseData.redirectUrl) {
         // Arahkan user ke halaman pembayaran Midtrans
-        window.location.href = responseData.redirectUrl;
+        
+        
+        window.location.href =(responseData.redirectUrl);
+        
+
+        ;
       } else {
         throw new Error('Invalid Midtrans response');
       }
@@ -105,22 +112,25 @@ export default function ProductCard({ product }) {
   };
 
   return (
-    <div className="border p-4 rounded shadow-md">
-      <img src={product.image_url} alt={product.name} className="w-full h-48 object-cover mb-2" />
-      <h2 className="text-xl font-semibold">{product.name}</h2>
-      <p>{product.description}</p>
-      <p className="font-bold text-lg mt-2">Rp{product.price}</p>
-      <p className="text-gray-500">Likes: {product.likes}</p>
-      <div className="grid grid-cols-2 gap-3 mt-4">
+    <div className="border  rounded shadow-md">
+      <img src={product.image_url} alt={product.name} className="w-full h-32 object-cover mb-2" />
+      <div className='p-4'>
+      <h2 className="text-sm font-medium">{product.name}</h2>
+      <p className="font-bold text-xl mt-1">Rp{product.price}</p>
+      <p className="text-gray-500 bg-[#586c7b] bg-opacity-10 w-fit px-2 py-1 rounded">{product.category}</p>
+      <div className="grid grid-cols-2 gap-3 mt-4 text-sm md:text-base font-normal">
+ 
         <button
           onClick={handleBuyNowClick}
-          className="bg-sky-500 font-bold px-3 py-1 rounded-lg mt-2 text-slate-200"
+          className="bg-[#374957]  px-3 py-2 rounded-lg mt-2 text-slate-200 w-full col-span-2"
         >
           Buy Now
         </button>
-        <button className="bg-transparent border-2 border-sky-500 font-bold px-3 py-2 rounded-lg mt-2 hover:bg-sky-500 hover:text-slate-200">
+        {/* <button className="bg-transparent border-2 border-[#374957]  px-3 py-2 rounded-lg mt-2 hover:bg-[#374957] hover:text-slate-200">
           Detail
-        </button>
+        </button> */}
+      </div>
+
       </div>
 
       {/* Popup untuk form pembelian */}
