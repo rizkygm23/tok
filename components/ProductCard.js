@@ -114,15 +114,15 @@ export default function ProductCard({ product }) {
   return (
     <div className="border  rounded shadow-md">
       <img src={product.image_url} alt={product.name} className="w-full h-32 object-cover mb-2" />
-      <div className='p-4'>
+      <div className='p-2'>
       <h2 className="text-sm font-medium">{product.name}</h2>
       <p className="font-bold text-xl mt-1">Rp{product.price}</p>
-      <p className="text-gray-500 bg-[#586c7b] bg-opacity-10 w-fit px-2 py-1 rounded">{product.category}</p>
-      <div className="grid grid-cols-2 gap-3 mt-4 text-sm md:text-base font-normal">
+      <p className="text-gray-500 mt-2 text-xs bg-[#586c7b] bg-opacity-10 w-fit px-2 py-1 rounded">{product.category}</p>
+      <div className="grid grid-cols-2 gap-3  text-sm md:text-base font-normal">
  
         <button
           onClick={handleBuyNowClick}
-          className="bg-[#374957]  px-3 py-2 rounded-lg mt-2 text-slate-200 w-full col-span-2"
+          className="bg-[#374957]  px-3 py-2 rounded-lg mt-1 hover:bg-[#586c7b] text-slate-200 w-full col-span-2"
         >
           Buy Now
         </button>

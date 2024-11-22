@@ -69,7 +69,7 @@ export default function HomePage() {
             <h2 className="hidden md:block my-auto col-span-2">Category</h2>
 
             {isCategoryOpen && (
-              <div className="absolute left-0 top-full mt-2 bg-white shadow-md rounded w-full z-10">
+              <div className="absolute left-0 top-full mt-2 bg-white shadow-md rounded w-fit md:w-full z-10">
                 <a
                   onClick={() => handleCategoryClick('Tshirt')}
                   className="block p-2 hover:bg-slate-100 cursor-pointer"
@@ -123,17 +123,17 @@ export default function HomePage() {
         col-span-10 md:col-span-9 lg:col-span-10 p-4">
         {/* Search Bar */}
         <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2  px-6 text-sm rounded z-50 w-full max-w-lg md:bottom-[20%] md:left-auto md:translate-x-0 md:right-8">
-          <form onSubmit={handleSearch} className="flex gap-2 p-4 bg-transparent backdrop-blur-sm bg-opacity-80 rounded-lg border border-gray-300">
+          <form onSubmit={handleSearch} className="grid grid-cols-5 gap-2 w-full p-4 bg-transparent backdrop-blur-sm bg-opacity-80 rounded-lg border border-gray-300">
             <input
               type="text"
               placeholder="Search product..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="flex-1 p-2 border border-gray-300 rounded focus:outline-none"
+              className="col-span-3  p-2 border border-gray-300 rounded focus:outline-none"
             />
             <button
               type="submit"
-              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+              className="bg-[#374957] col-span-2 text-white px-4 py-2 rounded hover:bg-[#374957] focus:outline-none"
             >
               Search
             </button>
