@@ -119,7 +119,8 @@ export default function HomePage() {
       </div>
 
       {/* Konten Utama */}
-      <main className="col-span-9 lg:col-span-10 p-4">
+      <main className="
+        col-span-10 md:col-span-9 lg:col-span-10 p-4">
         {/* Search Bar */}
         <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2  px-6 text-sm rounded z-50 w-full max-w-lg md:bottom-[20%] md:left-auto md:translate-x-0 md:right-8">
           <form onSubmit={handleSearch} className="flex gap-2 p-4 bg-transparent backdrop-blur-sm bg-opacity-80 rounded-lg border border-gray-300">
