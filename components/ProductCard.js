@@ -57,6 +57,7 @@ export default function ProductCard({ product }) {
           
         },
       ]);
+        
 
       if (error) {
         console.error('Error inserting transaction:', error.message, error.details);
@@ -68,6 +69,7 @@ export default function ProductCard({ product }) {
       alert('Terjadi kesalahan saat membuat pesanan, coba lagi.');
       return;
     }
+    const {error} = await supabase.from('products').update({stock : stock - quantity}).eq('id', product.id);
 
     // Panggil API backend untuk membuat transaksi di Midtrans
     const transactionPayload = {
