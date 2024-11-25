@@ -69,7 +69,9 @@ export default function ProductCard({ product }) {
       alert('Terjadi kesalahan saat membuat pesanan, coba lagi.');
       return;
     }
-    const {error} = await supabase.from('products').update({stock : stock - quantity}).eq('id', product.id);
+    const {a} =await supabase.from('products').select('*').eq('id', product.id);
+    const stock = a
+    const {data,error} = await supabase.from('products').update({stock : stock - quantity}).eq('id', product.id);
 
     // Panggil API backend untuk membuat transaksi di Midtrans
     const transactionPayload = {
