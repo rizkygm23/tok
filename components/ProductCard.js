@@ -69,13 +69,22 @@ export default function ProductCard({ product }) {
       alert('Terjadi kesalahan saat membuat pesanan, coba lagi.');
       return;
     }
-    const {a} =await supabase.from('products').select('*')
-    const Newstock = a.stock - quantity
-    
-    .eq('id', product.id);
-    
-    const {data,error} = await supabase.from('products').update({stock : Newstock}).eq('id', product.id);
+    try {
+      const { data: productData } = await supabase
+        .from('products')
+        .select('stock')
+        .eq('id', product.id)
+        .single();
 
+      if (!productData) {
+        throw new Error('Product not found');
+      }
+
+      const newStock = productData.stock - quantity;
+      await supabase.from('products').update({ stock: newStock }).eq('id', product.id);
+    } catch (error) {
+      console.error('Error updating stock:', error);
+    }
     // Panggil API backend untuk membuat transaksi di Midtrans
     const transactionPayload = {
       orderId: orderId, // Gunakan orderId yang sama
