@@ -14,6 +14,14 @@ export default function ProductCard({ product }) {
     phone: '',
     total: 0,
   });
+  const formatRupiah = (angka) => {
+    return new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      maximumFractionDigits: 0,
+    }).format(angka);
+  };
+  
 
   const handleBuyNowClick = () => {
     setIsPopupOpen(true);
@@ -128,20 +136,26 @@ export default function ProductCard({ product }) {
   };
 
   return (
-    <div className="border  rounded shadow-md">
+    <div className="border   shadow-md rounded-[16px]">
       <img src={product.image_url} alt={product.name} className="w-full h-32 object-cover mb-2" />
       <div className='p-2'>
-      <h2 className="text-sm font-medium">{product.name}</h2>
-      <p className="font-bold text-xl mt-1">Rp{product.price}</p>
+      <h2 className="text-[12px] font-light  line-clamp-2 ">{product.name}</h2>
+      <p className="font-bold text-[14px] mt-1 overflow-hidden text-ellipsis line-clamp-2 
+             whitespace-normal -webkit-box -webkit-line-clamp-2 -webkit-box-orient-vertical">{formatRupiah(product.price)}</p>
       <p className="text-gray-500 mt-2 text-xs bg-[#586c7b] bg-opacity-10 w-fit px-2 py-1 rounded">{product.category}</p>
-      <div className="grid grid-cols-2 gap-3  text-sm md:text-base font-normal">
+      <div className="grid grid-cols-3 gap-3  text-sm md:text-base font-normal">
  
         <button
           onClick={handleBuyNowClick}
-          className="bg-[#374957]  px-3 py-2 rounded-lg mt-1 hover:bg-[#586c7b] text-slate-200 w-full col-span-2"
+          className="bg-[#374957] col-span-2 px-3 py-2 rounded-lg mt-1 hover:bg-[#586c7b] text-slate-200 w-full "
         >
           Buy Now
         </button>
+        <a id='detail' className='w-full mt-1 bg-slate-200 hover:bg-slate-100 rounded-lg items-center justify-center flex'>
+          <button className=''>
+            <img className='w-6 h-6 mx-auto my-auto' src='/detail-icon.png'></img>
+          </button>
+        </a>
         {/* <button className="bg-transparent border-2 border-[#374957]  px-3 py-2 rounded-lg mt-2 hover:bg-[#374957] hover:text-slate-200">
           Detail
         </button> */}
