@@ -122,7 +122,7 @@ export default function HomePage() {
       <main className="
         col-span-10 md:col-span-9 lg:col-span-10 p-4">
         {/* Search Bar */}
-        <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2  px-6 text-sm rounded z-50 w-full max-w-lg md:bottom-[20%] md:left-auto md:translate-x-0 md:right-8">
+        <div className="fixed bottom-8 md:hidden left-1/2 transform -translate-x-1/2  px-6 text-sm rounded z-50 w-full max-w-lg md:bottom-[20%] md:left-auto md:translate-x-0 md:right-8">
           <form onSubmit={handleSearch} className="grid grid-cols-5 gap-2 w-full p-4 bg-transparent backdrop-blur-sm bg-opacity-80 rounded-lg border border-gray-300">
             <input
               type="text"
@@ -140,11 +140,27 @@ export default function HomePage() {
           </form>
         </div>
 
-        {/* Product List */}
-        <h1 className="text-2xl font-bold mb-4">
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 max-w-screen-lg mx-auto mt-4 px-3 sm:px-7">
+                  {/* Product List */}
+        <h1 className="text-2xl font-bold mb-4 col-span-2 sm:col-span-3 md:col-span-4 lg:col-span-5">
           {activeCategory ? `Category: ${activeCategory}` : 'All Product'}
         </h1>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+        <form onSubmit={handleSearch} className=" md:col-span-4 sticky top-3 lg:col-span-5 hidden md:grid grid-cols-5 gap-2 w-full p-4 bg-transparent backdrop-blur-sm bg-opacity-80 rounded-lg border border-gray-300">
+            <input
+              type="text"
+              placeholder="Search product..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="col-span-3 lg:col-span-4 p-2 border border-gray-300 rounded focus:outline-none"
+            />
+            <button
+              type="submit"
+              className="bg-[#374957] col-span-2 lg:col-span-1 text-white px-4 py-2 rounded hover:bg-[#374957] focus:outline-none"
+            >
+              Search
+            </button>
+          </form>
           {products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}

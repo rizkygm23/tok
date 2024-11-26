@@ -3,6 +3,7 @@ import { supabase } from '../lib/supabase';
 import bcrypt from 'bcryptjs';
 import toast, { Toaster } from 'react-hot-toast';
 import axios from 'axios';
+import {TransaksiForm} from '../components/TransaksiForm'
 export default function AdminPage() {
   const [formData, setFormData] = useState({
     name: '',

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { supabase } from '../lib/supabase';
+// import popUpformTransaksi from './PopUpForm';
 
 
 export default function ProductCard({ product }) {
@@ -143,7 +144,7 @@ export default function ProductCard({ product }) {
       <p className="font-bold text-[14px] mt-1 overflow-hidden text-ellipsis line-clamp-2 
              whitespace-normal -webkit-box -webkit-line-clamp-2 -webkit-box-orient-vertical">{formatRupiah(product.price)}</p>
       <p className="text-gray-500 mt-2 text-xs bg-[#586c7b] bg-opacity-10 w-fit px-2 py-1 rounded">{product.category}</p>
-      <div className="grid grid-cols-3 gap-3  text-sm md:text-base font-normal">
+      <div className="grid grid-cols-3 gap-3  text-xs sm:text-sm  font-normal">
  
         <button
           onClick={handleBuyNowClick}
@@ -151,7 +152,7 @@ export default function ProductCard({ product }) {
         >
           Buy Now
         </button>
-        <a id='detail' className='w-full mt-1 bg-slate-200 hover:bg-slate-100 rounded-lg items-center justify-center flex'>
+        <a id='detail' href={`/detail?id=${product.id}`} className='w-full mt-1 bg-slate-200 hover:bg-slate-100 rounded-lg items-center justify-center flex'>
           <button className=''>
             <img className='w-6 h-6 mx-auto my-auto' src='/detail-icon.png'></img>
           </button>
@@ -165,6 +166,8 @@ export default function ProductCard({ product }) {
 
       {/* Popup untuk form pembelian */}
       {isPopupOpen && (
+        // <div><popUpformTransaksi/></div>
+        
         <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50">
           <div className="bg-white p-6 rounded shadow-md w-96">
             <h2 className="text-xl font-bold mb-4">Detail Pembelian</h2>
