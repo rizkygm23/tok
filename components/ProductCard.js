@@ -144,13 +144,13 @@ export default function ProductCard({ product }) {
       <p className="font-bold text-[14px] mt-1 overflow-hidden text-ellipsis line-clamp-2 
              whitespace-normal -webkit-box -webkit-line-clamp-2 -webkit-box-orient-vertical">{formatRupiah(product.price)}</p>
       <p className="text-gray-500 mt-2 text-xs bg-[#586c7b] bg-opacity-10 w-fit px-2 py-1 rounded">{product.category}</p>
-      <div className="grid grid-cols-3 gap-3  text-xs sm:text-sm  font-normal">
+      <div className="grid grid-cols-3 gap-1 sm:gap-3  text-[12px] sm:text-sm  font-normal">
  
         <button
           onClick={handleBuyNowClick}
-          className="bg-[#374957] col-span-2 px-3 py-2 rounded-lg mt-1 hover:bg-[#586c7b] text-slate-200 w-full "
+          className="bg-[#374957] col-span-2 px-2 py-2 rounded-lg mt-1 hover:bg-[#586c7b] text-slate-200 w-full "
         >
-          Buy Now
+          Order
         </button>
         <a id='detail' href={`/detail?id=${product.id}`} className='w-full mt-1 bg-slate-200 hover:bg-slate-100 rounded-lg items-center justify-center flex'>
           <button className=''>

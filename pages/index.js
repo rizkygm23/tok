@@ -141,7 +141,7 @@ export default function HomePage() {
         </div>
 
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 max-w-screen-lg mx-auto mt-4 px-3 sm:px-7">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 max-w-screen-lg mx-auto mt-4  sm:px-7">
                   {/* Product List */}
         <h1 className="text-2xl font-bold mb-4 col-span-2 sm:col-span-3 md:col-span-4 lg:col-span-5">
           {activeCategory ? `Category: ${activeCategory}` : 'All Product'}
