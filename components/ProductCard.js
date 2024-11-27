@@ -168,10 +168,10 @@ export default function ProductCard({ product }) {
       {isPopupOpen && (
         // <div><popUpformTransaksi/></div>
         
-        <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50">
-          <div className="bg-white p-6 rounded shadow-md w-96">
+        <div className="fixed top-0 left-0 p-4 w-full h-full flex justify-center items-center bg-black bg-opacity-50 z-50">
+          <div className="bg-slate-100 p-6 rounded shadow-md w-96">
             <h2 className="text-xl font-bold mb-4">Detail Pembelian</h2>
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4 text-[12px] text-gray-500">
               <input
                 type="text"
                 name="name"
@@ -179,7 +179,7 @@ export default function ProductCard({ product }) {
                 value={transactionData.name}
                 onChange={handleInputChange}
                 required
-                className="w-full p-2 border rounded"
+                className="w-full p-2 border-b-[1px]  border-gray-300 rounded"
               />
               <input
                 type="text"
@@ -188,7 +188,7 @@ export default function ProductCard({ product }) {
                 value={transactionData.email}
                 onChange={handleInputChange}
                 required
-                className="w-full p-2 border rounded"
+                className="w-full p-2  border-b-[1px]  border-gray-300 rounded"
               />
               <input
                 type="text"
@@ -197,7 +197,7 @@ export default function ProductCard({ product }) {
                 value={transactionData.phone}
                 onChange={handleInputChange}
                 required
-                className="w-full p-2 border rounded"
+                className="w-full p-2  border-b-[1px]  border-gray-300 rounded"
               />
               <input
                 type="number"
@@ -206,7 +206,7 @@ export default function ProductCard({ product }) {
                 value={transactionData.quantity}
                 onChange={handleInputChange}
                 required
-                className="w-full p-2 border rounded"
+                className="w-full p-2  border-b-[1px]  border-gray-300 rounded"
                 min="1"
               />
               <select
@@ -214,7 +214,7 @@ export default function ProductCard({ product }) {
                 value={transactionData.size}
                 onChange={handleInputChange}
                 required
-                className="w-full p-2 border rounded"
+                className="w-full p-2  border-b-[1px]  border-gray-300 rounded"
               >
                 <option value="L">L</option>
                 <option value="XL">XL</option>
@@ -228,21 +228,21 @@ export default function ProductCard({ product }) {
                 value={transactionData.address}
                 onChange={handleInputChange}
                 required
-                className="w-full p-2 border rounded"
+                className="w-full p-2  border-b-[1px]  border-gray-300 rounded"
               />
               <textarea
                 name="notes"
                 placeholder="Catatan"
                 value={transactionData.notes}
                 onChange={handleInputChange}
-                className="w-full p-2 border rounded"
+                className="w-full p-2  border-b-[1px]  border-gray-300 rounded"
               ></textarea>
               <p className="font-bold">Total: Rp{transactionData.total}</p>
               <div className="flex justify-between">
-                <button type="button" onClick={() => setIsPopupOpen(false)} className="bg-gray-500 text-white px-4 py-2 rounded">
+                <button type="button" onClick={() => setIsPopupOpen(false)} className="bg-red-600 text-white px-4 py-2 rounded">
                   Batal
                 </button>
-                <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
+                <button type="submit" className="bg-[#374957] text-white px-4 py-2 rounded">
                   Konfirmasi
                 </button>
               </div>
