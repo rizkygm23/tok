@@ -134,7 +134,7 @@ export default function HomePage() {
             />
             <button
               type="submit"
-              className="bg-slate-200 col-span-1 text-white px-4 py-2 rounded-md hover:bg-[#374957] focus:outline-none"
+              className="bg-slate-200 col-span-1 text-white px-4 py-2 rounded-md focus:outline-none"
             > <img src="/search.png" alt="Search" className="w-5 mx-auto" />
               
             </button>

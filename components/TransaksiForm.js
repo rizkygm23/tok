@@ -177,9 +177,9 @@ export default function TransactionForm({ product, onSuccess }) {
         onChange={handleInputChange}
         className="w-full p-2 border rounded col-span-2"
       ></textarea>
-      <div>
+      <div className='col-span-2'>
       <p className="font-bold mt-3">Total: {formatRupiah(transactionData.total)}</p>
-      <button type="submit" className="bg-blue-500 mt-1 text-white px-4 py-2 rounded">
+      <button type="submit" className="bg-[#374957] mt-1 w-full  text-white px-4 py-4 rounded">
         Konfirmasi
       </button>
       </div>

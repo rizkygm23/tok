@@ -137,10 +137,10 @@ export default function ProductCard({ product }) {
   };
 
   return (
-    <div className="border   shadow-md rounded-[16px] overflow-hidden">
+    <div className="border   shadow-md rounded-[16px] overflow-hidden ">
       <img src={product.image_url} alt={product.name} className="w-full h-32 object-cover " />
-      <div className='p-2 bg-slate-100'>
-      <h2 className="text-[12px] font-light  line-clamp-2 ">{product.name}</h2>
+      <div className='p-2 bg-slate-100 h-full min-h[164px]'>
+      <h2 className="text-[12px] md:text-[16px] font-light  line-clamp-2 ">{product.name}</h2>
       <p className="font-bold text-[14px] mt-1 overflow-hidden text-ellipsis line-clamp-2 
              whitespace-normal -webkit-box -webkit-line-clamp-2 -webkit-box-orient-vertical">{formatRupiah(product.price)}</p>
       <p className="text-gray-500 mt-2 text-xs bg-[#586c7b] bg-opacity-10 w-fit px-2 py-1 rounded">{product.category}</p>
