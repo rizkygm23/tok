@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { supabase } from '../lib/supabase';
 import bcrypt from 'bcryptjs';
+import "../app/globals.css";
 
 export default function RegisterPage() {
   const [formData, setFormData] = useState({

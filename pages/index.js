@@ -49,11 +49,12 @@ export default function HomePage() {
     <div className="grid grid-cols-12 h-screen">
       
       {/* Sidebar */}
-      <div className="bg-slate-200 col-span-2 lg:col-span-2 p-4 rounded-tr-md rounded-br-md h-full">
-        <nav className="grid grid-cols-1 gap-10 text-[#374957] text-sm">
+      <div className="bg-slate-100 overflow-hidden  col-span-2 lg:col-span-2 p-4 rounded-tr-md rounded-br-md w-full h-full">
+        <nav className="grid grid-cols-1 gap-10 text-[#374957] text-sm"
+        >
           {/* Home */}
           <a
-            className="grid grid-cols-1 md:grid-cols-3 font-bold hover:bg-slate-300 md:px-4 md:py-4 rounded-md md:pr-7"
+            className="grid grid-cols-1 hover:text-slate-900 md:grid-cols-3 font-bold hover:bg-slate-300 ease-in-out duration-[20000] md:px-4 md:py-4 rounded-md md:pr-7"
             href="/"
           >
             <img src="/home.png" alt="Home" className="w-5 h-5 mx-auto" />
@@ -62,7 +63,7 @@ export default function HomePage() {
 
           {/* Dropdown Kategori */}
           <div
-            className="relative grid grid-cols-1 md:grid-cols-3 font-bold hover:bg-slate-300 md:px-4 md:py-4 rounded-md md:pr-7 cursor-pointer"
+            className="relative grid grid-cols-1 md:grid-cols-3 hover:text-slate-900 font-bold hover:bg-slate-300 md:px-4 md:py-4 rounded-md md:pr-7 cursor-pointer"
             onClick={() => setIsCategoryOpen(!isCategoryOpen)}
           >
             <img src="/categori.png" alt="Category" className="w-5 h-5 mx-auto" />
@@ -100,7 +101,7 @@ export default function HomePage() {
 
           {/* Kebijakan */}
           <a
-            className="grid grid-cols-1 md:grid-cols-3 font-bold hover:bg-slate-300 md:px-4 md:py-4 rounded-md md:pr-7"
+            className="grid grid-cols-1 md:grid-cols-3 hover:text-slate-900 font-bold hover:bg-slate-300 md:px-4 md:py-4 rounded-md md:pr-7"
             href="/policy"
           >
             <img src="/kebijakan.png" alt="Policy" className="w-5 h-5 mx-auto" />
@@ -109,7 +110,7 @@ export default function HomePage() {
 
           {/* FAQ */}
           <a
-            className="grid grid-cols-1 md:grid-cols-3 font-bold hover:bg-slate-300 md:px-4 md:py-4 rounded-md md:pr-7"
+            className="grid grid-cols-1 md:grid-cols-3 font-bold hover:bg-slate-300 hover:text-slate-900 md:px-4 md:py-4 rounded-md md:pr-7"
             href="/faq"
           >
             <img src="/faq.png" alt="FAQ" className="w-5 h-5 mx-auto" />
@@ -120,22 +121,22 @@ export default function HomePage() {
 
       {/* Konten Utama */}
       <main className="
-        col-span-10 md:col-span-9 lg:col-span-10 p-4">
+        col-span-10 md:col-span-9 bg-slate-200 lg:col-span-10 p-4">
         {/* Search Bar */}
         <div className="fixed bottom-8 md:hidden left-1/2 transform -translate-x-1/2  px-6 text-sm rounded z-50 w-full max-w-lg md:bottom-[20%] md:left-auto md:translate-x-0 md:right-8">
-          <form onSubmit={handleSearch} className="grid grid-cols-5 gap-2 w-full p-4 bg-transparent backdrop-blur-sm bg-opacity-80 rounded-lg border border-gray-300">
+          <form onSubmit={handleSearch} className="grid grid-cols-5 gap-2 w-full p-2 bg-transparent backdrop-blur-sm bg-opacity-80 rounded-[14px] border border-gray-300">
             <input
               type="text"
               placeholder="Search product..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="col-span-3  p-2 border border-gray-300 rounded focus:outline-none"
+              className="col-span-4  p-3 border border-gray-300 rounded-md focus:outline-none"
             />
             <button
               type="submit"
-              className="bg-[#374957] col-span-2 text-white px-4 py-2 rounded hover:bg-[#374957] focus:outline-none"
-            >
-              Search
+              className="bg-slate-200 col-span-1 text-white px-4 py-2 rounded-md hover:bg-[#374957] focus:outline-none"
+            > <img src="/search.png" alt="Search" className="w-5 mx-auto" />
+              
             </button>
           </form>
         </div>
@@ -146,21 +147,22 @@ export default function HomePage() {
         <h1 className="text-2xl font-bold mb-4 col-span-2 sm:col-span-3 md:col-span-4 lg:col-span-5">
           {activeCategory ? `Category: ${activeCategory}` : 'All Product'}
         </h1>
-        <form onSubmit={handleSearch} className=" md:col-span-4 sticky top-3 lg:col-span-5 hidden md:grid grid-cols-5 gap-2 w-full p-4 bg-transparent backdrop-blur-sm bg-opacity-80 rounded-lg border border-gray-300">
+        <form onSubmit={handleSearch} className=" md:col-span-4 sticky top-3 lg:col-span-5 hidden md:grid grid-cols-5 gap-2 w-full p-2 bg-transparent backdrop-blur-sm bg-opacity-80 rounded-[24px] border border-gray-300">
             <input
               type="text"
               placeholder="Search product..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="col-span-3 lg:col-span-4 p-2 border border-gray-300 rounded focus:outline-none"
+              className="col-span-3 lg:col-span-4 p-2 border border-gray-300 rounded-2xl focus:outline-none"
             />
             <button
               type="submit"
-              className="bg-[#374957] col-span-2 lg:col-span-1 text-white px-4 py-2 rounded hover:bg-[#374957] focus:outline-none"
+              className="bg-[#374957] col-span-2 lg:col-span-1 text-white px-4 py-2 rounded-2xl hover:bg-[#425767] focus:outline-none"
             >
               Search
             </button>
           </form>
+          <img src='/content.png' className='col-span-2 sm:col-span-3 md:col-span-4 lg:col-span-5  rounded-2xl'></img>
           {products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}

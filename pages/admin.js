@@ -4,6 +4,7 @@ import bcrypt from 'bcryptjs';
 import toast, { Toaster } from 'react-hot-toast';
 import axios from 'axios';
 import {TransaksiForm} from '../components/TransaksiForm'
+import "../app/globals.css";
 export default function AdminPage() {
   const [formData, setFormData] = useState({
     name: '',
