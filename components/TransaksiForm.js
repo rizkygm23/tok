@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import { supabase } from '../lib/supabase';
 
-export default function TransactionForm({ product, onSuccess }) {
+export default function TransactionForm({ product }) {
   const [transactionData, setTransactionData] = useState({
     name: '',
     quantity: 1,
@@ -26,87 +25,38 @@ export default function TransactionForm({ product, onSuccess }) {
     setTransactionData((prev) => ({
       ...prev,
       [name]: value,
-      total: product.price * (name === 'quantity' ? value : prev.quantity), // Update total jika jumlah berubah
+      total: product.price * (name === 'quantity' ? value : prev.quantity),
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const { name, quantity, size, address, notes, email, phone, total } = transactionData;
 
-    // Buat orderId yang unik untuk setiap transaksi
-    const orderId = `ORDER-${new Date().getTime()}`;
+    // Format pesan WhatsApp
+    const message = `
+Halo, saya ingin memesan produk berikut:
 
-    try {
-      const { error } = await supabase.from('transaction').insert([
-        {
-          order_id: orderId,
-          product_id: product.id,
-          name: name,
-          email: email,
-          phone: phone,
-          quantity: quantity,
-          size: size,
-          address: address,
-          notes: notes,
-          total_amount: total,
-          status: 'pending',
-        },
-      ]);
+Nama Produk: ${product.name}
+Jumlah: ${quantity}
+Ukuran: ${size}
+Harga Satuan: ${formatRupiah(product.price)}
+Total Harga: ${formatRupiah(total)}
 
-      if (error) {
-        console.error('Error creating transaction:', error);
-        alert('Gagal membuat transaksi. Silakan coba lagi.');
-        return;
-      }
+Informasi Pemesan:
+Nama: ${name}
+Email: ${email}
+Telepon: ${phone}
+Alamat: ${address}
+Catatan: ${notes}
+    `;
 
-      alert('Transaksi berhasil dibuat!');
-      if (onSuccess) {
-        onSuccess(); // Callback setelah transaksi berhasil
-      }
-    } catch (error) {
-      console.error('Unexpected error:', error);
-      alert('Terjadi kesalahan saat membuat transaksi.');
-    }
-    const transactionPayload = {
-        orderId: orderId, // Gunakan orderId yang sama
-        grossAmount: total,
-        customerDetails: {
-          first_name: name,
-          email: email,
-          phone: phone,
-        },
-      };
-  
-      try {
-        const response = await fetch('/api/create-transaction', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(transactionPayload),
-        });
-  
-        if (!response.ok) {
-          throw new Error('Failed to create Midtrans transaction');
-        }
-  
-        const responseData = await response.json();
-        if (responseData.redirectUrl) {
-          // Arahkan user ke halaman pembayaran Midtrans
-          
-          
-          window.location.href =(responseData.redirectUrl);
-          
-  
-          ;
-        } else {
-          throw new Error('Invalid Midtrans response');
-        }
-      } catch (error) {
-        console.error('Error creating transaction:', error);
-        alert('Terjadi kesalahan saat memproses pembayaran, coba lagi.');
-      }
+    const whatsappUrl = `https://wa.me/6281218582747?text=${encodeURIComponent(
+      message
+    )}`;
+
+    // Redirect ke WhatsApp
+    window.open(whatsappUrl, '_blank');
   };
 
   return (
@@ -147,7 +97,7 @@ export default function TransactionForm({ product, onSuccess }) {
         required
         className="w-full p-2 border rounded"
         min="1"
-        max={product.stock} // Batasi jumlah berdasarkan stok
+        max={product.stock} 
       />
       <select
         name="size"
@@ -177,13 +127,14 @@ export default function TransactionForm({ product, onSuccess }) {
         onChange={handleInputChange}
         className="w-full p-2 border rounded col-span-2"
       ></textarea>
-      <div className='col-span-2'>
-      <p className="font-bold mt-3">Total: {formatRupiah(transactionData.total)}</p>
-      <button type="submit" className="bg-[#374957] mt-1 w-full  text-white px-4 py-4 rounded">
-        Konfirmasi
-      </button>
+      <div className="col-span-2">
+        <p className="font-bold mt-3">
+          Total: {formatRupiah(transactionData.total)}
+        </p>
+        <button type="submit" target="_blank" className="bg-[#374957] mt-1 w-full text-white px-4 py-4 rounded">
+          Konfirmasi
+        </button>
       </div>
-
     </form>
   );
 }
