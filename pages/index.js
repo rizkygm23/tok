@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import ProductCard from '../components/ProductCard';
 import "../app/globals.css";
-import inventory from './inventory';
+import inventory from '../data/inventory';
 
 export default function HomePage() {
   const [products, setProducts] = useState(inventory); // Initialize with data from inventory.js

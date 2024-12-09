@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import TransactionForm from '../components/TransaksiForm';
-import inventory from './inventory';
+import inventory from '../data/inventory';
 import "../app/globals.css";
 
 export default function DetailPage() {
