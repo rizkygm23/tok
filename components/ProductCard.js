@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import { formatRupiah } from "@/lib/format";
+
 export default function ProductCard({ product }) {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [transactionData, setTransactionData] = useState({
@@ -13,13 +15,7 @@ export default function ProductCard({ product }) {
     total: 0,
   });
 
-  const formatRupiah = (angka) => {
-    return new Intl.NumberFormat("id-ID", {
-      style: "currency",
-      currency: "IDR",
-      maximumFractionDigits: 0,
-    }).format(angka);
-  };
+ 
 
   const handleBuyNowClick = () => {
     setIsPopupOpen(true);

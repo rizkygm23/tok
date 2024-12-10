@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import { formatRupiah } from '@/lib/format';
 export default function TransactionForm({ product }) {
   const [transactionData, setTransactionData] = useState({
     name: '',
@@ -12,13 +12,7 @@ export default function TransactionForm({ product }) {
     total: product ? product.price : 0,
   });
 
-  const formatRupiah = (angka) => {
-    return new Intl.NumberFormat('id-ID', {
-      style: 'currency',
-      currency: 'IDR',
-      maximumFractionDigits: 0,
-    }).format(angka);
-  };
+
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

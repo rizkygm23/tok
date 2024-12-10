@@ -8,7 +8,9 @@ body {
   background: var(--background);
   font-family: 'Poppins', Arial, Helvetica, sans-serif;
 }
-
+html{
+  scroll-behavior: smooth;
+}
 
 :root {
   --background: #ffffff;
