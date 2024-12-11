@@ -9,6 +9,69 @@ export default function DetailPage() {
   const { id } = router.query; // Ambil ID produk dari query string
   const [product, setProduct] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [transactionData, setTransactionData] = useState({
+    name: "",
+    quantity: 1,
+    size: "L",
+    address: "",
+    notes: "",
+    email: "",
+    phone: "",
+    total: 0,
+  });
+
+  const handleBuyNowClick = () => {
+    setIsPopupOpen(true);
+    setTransactionData({
+      ...transactionData,
+      total: product.price,
+    });
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setTransactionData((prev) => ({
+      ...prev,
+      [name]: value,
+      total: product.price * (name === "quantity" ? value : prev.quantity),
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const { name, quantity, size, address, notes, email, phone, total } =
+      transactionData;
+
+    // Format pesan WhatsApp
+    const message = `
+      Halo, saya ingin memesan produk berikut:
+
+      Nama Produk: ${product.name}
+      Jumlah: ${quantity}
+      Ukuran: ${size}
+      Harga Satuan: ${formatRupiah(product.price)}
+      Total Harga: ${formatRupiah(total)}
+
+      Informasi Pemesan:
+      Nama: ${name}
+      Email: ${email}
+      Telepon: ${phone}
+      Alamat: ${address}
+      Catatan: ${notes}
+    `;
+
+    const whatsappUrl = `https://wa.me/6281218582747?text=${encodeURIComponent(
+      message
+    )}`;
+
+    // Redirect ke WhatsApp
+    window.location.href = whatsappUrl;
+  };
+
+
+
+
 
   useEffect(() => {
     if (id) {
@@ -82,12 +145,110 @@ export default function DetailPage() {
           Back
         </button>
         <button
-          onClick={() => router.push(`/buy?id=${id}`)}
+        
+          onClick={handleBuyNowClick}
           className="bg-[#374957] text-white py-4 col-span-3"
         >
           Buy
         </button>
       </div>
+
+
+      {isPopupOpen && (
+        <div className="fixed top-0 left-0 p-4 w-full h-full flex justify-center items-center bg-black bg-opacity-50 z-50">
+          <div className="bg-slate-100 p-6 rounded shadow-md w-96">
+            <h2 className="text-xl font-bold mb-4">Detail Pembelian</h2>
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-4 text-[12px] text-gray-500"
+            >
+              <input
+                type="text"
+                name="name"
+                placeholder="Nama Anda"
+                value={transactionData.name}
+                onChange={handleInputChange}
+                required
+                className="w-full p-2 border-b-[1px]  border-gray-300 rounded"
+              />
+              <input
+                type="text"
+                name="email"
+                placeholder="Email"
+                value={transactionData.email}
+                onChange={handleInputChange}
+                required
+                className="w-full p-2  border-b-[1px]  border-gray-300 rounded"
+              />
+              <input
+                type="text"
+                name="phone"
+                placeholder="Nomor Telepon"
+                value={transactionData.phone}
+                onChange={handleInputChange}
+                required
+                className="w-full p-2  border-b-[1px]  border-gray-300 rounded"
+              />
+              <input
+                type="number"
+                name="quantity"
+                placeholder="Jumlah"
+                value={transactionData.quantity}
+                onChange={handleInputChange}
+                required
+                className="w-full p-2  border-b-[1px]  border-gray-300 rounded"
+                min="1"
+              />
+              <select
+                name="size"
+                value={transactionData.size}
+                onChange={handleInputChange}
+                required
+                className="w-full p-2  border-b-[1px]  border-gray-300 rounded"
+              >
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+                <option value="XXL">XXL</option>
+                <option value="XXXL">XXXL</option>
+              </select>
+              <input
+                type="text"
+                name="address"
+                placeholder="Alamat"
+                value={transactionData.address}
+                onChange={handleInputChange}
+                required
+                className="w-full p-2  border-b-[1px]  border-gray-300 rounded"
+              />
+              <textarea
+                name="notes"
+                placeholder="Catatan"
+                value={transactionData.notes}
+                onChange={handleInputChange}
+                className="w-full p-2  border-b-[1px]  border-gray-300 rounded"
+              ></textarea>
+              <p className="font-bold">
+                Total: {formatRupiah(transactionData.total)}
+              </p>
+              <div className="flex justify-between">
+                <button
+                  type="button"
+                  onClick={() => setIsPopupOpen(false)}
+                  className="bg-red-600 text-white px-4 py-2 rounded"
+                >
+                  Batal
+                </button>
+                <button
+                  type="submit"
+                  className="bg-[#374957] text-white px-4 py-2 rounded"
+                >
+                  Kirim ke WhatsApp
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

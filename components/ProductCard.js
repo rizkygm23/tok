@@ -15,8 +15,6 @@ export default function ProductCard({ product }) {
     total: 0,
   });
 
- 
-
   const handleBuyNowClick = () => {
     setIsPopupOpen(true);
     setTransactionData({
@@ -41,20 +39,20 @@ export default function ProductCard({ product }) {
 
     // Format pesan WhatsApp
     const message = `
-Halo, saya ingin memesan produk berikut:
+      Halo, saya ingin memesan produk berikut:
 
-Nama Produk: ${product.name}
-Jumlah: ${quantity}
-Ukuran: ${size}
-Harga Satuan: ${formatRupiah(product.price)}
-Total Harga: ${formatRupiah(total)}
+      Nama Produk: ${product.name}
+      Jumlah: ${quantity}
+      Ukuran: ${size}
+      Harga Satuan: ${formatRupiah(product.price)}
+      Total Harga: ${formatRupiah(total)}
 
-Informasi Pemesan:
-Nama: ${name}
-Email: ${email}
-Telepon: ${phone}
-Alamat: ${address}
-Catatan: ${notes}
+      Informasi Pemesan:
+      Nama: ${name}
+      Email: ${email}
+      Telepon: ${phone}
+      Alamat: ${address}
+      Catatan: ${notes}
     `;
 
     const whatsappUrl = `https://wa.me/6281218582747?text=${encodeURIComponent(
