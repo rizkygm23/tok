@@ -1,8 +1,9 @@
 import { useState } from "react";
-
+import { motion } from "framer-motion";
+import { fadeIn } from "@/components/Fade";
 import { formatRupiah } from "@/lib/format";
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product, delay,  }) {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [transactionData, setTransactionData] = useState({
     name: "",
@@ -64,7 +65,13 @@ export default function ProductCard({ product }) {
   };
 
   return (
-    <div className="border   shadow-md rounded-[16px] overflow-hidden ">
+    <motion.div
+      variants={fadeIn("up", delay)}
+      initial={"hidden"}
+      whileInView={"show"}
+      viewport={{ once: true, amount: 0.01 }}
+      className="border   shadow-md rounded-[16px] overflow-hidden "
+    >
       <img
         src={product.image_url}
         alt={product.name}
@@ -200,6 +207,6 @@ export default function ProductCard({ product }) {
           </div>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 }

@@ -8,6 +8,7 @@ export default function HomePage() {
   const [isCategoryOpen, setIsCategoryOpen] = useState(false); // Untuk dropdown kategori
   const [activeCategory, setActiveCategory] = useState(null); // Kategori aktif
   const [searchQuery, setSearchQuery] = useState(''); // Query pencarian
+  const delay = 0.3
 
   // Fungsi untuk menyaring produk berdasarkan kategori dan pencarian
   const filterProducts = (category = null, search = '') => {
@@ -149,8 +150,8 @@ export default function HomePage() {
             </button>
           </form>
           <img src="/content.png" className="col-span-2 sm:col-span-3 md:col-span-4 lg:col-span-5 rounded-2xl"></img>
-          {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
+          {products.map((product, index) => (
+            <ProductCard key={product.id} product={product} delay={delay * (index * 0.1)} index={index} />
           ))}
         </div>
       </main>
