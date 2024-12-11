@@ -27,10 +27,10 @@ export default function LandingPage() {
 
             {/* ini bagian Header */}
             <div className='w-full h-fit  grid grid-cols-1 md:grid-cols-2 mt-20 px-5 md:px-24 lg:px-52'>
-                <div className='item-center w-full h-fit py-10 my-auto'>
-                    <h1 className='text:lg md:text-4xl font-bold'>Temukan Gaya dan Ekspresikan Dirimu!</h1>
-                    <h2 className='text-lg mt-2'>Beragam pilihan fashion terkini yang sesuai dengan kepribadianmu. Jadilah dirimu yang terbaik setiap hari!</h2>
-                    <button onClick={() => router.push('/catalog')} className='bg-[#374957] hover:bg-slate-900 text-white px-4 hover:pr-6 py-2 mt-4 rounded'>See more</button>
+                <div className='item-center w-full h-fit py-10 my-auto px-4'>
+                    <h1 className=' text-3xl md:text-4xl font-bold'>Temukan Gaya dan Ekspresikan Dirimu!</h1>
+                    <h2 className=' text-sm md:text-lg mt-2'>Beragam pilihan fashion terkini yang sesuai dengan kepribadianmu. Jadilah dirimu yang terbaik setiap hari!</h2>
+                    <button onClick={() => router.push('/catalog')} className='text-sm md:text-lg bg-[#374957] hover:bg-slate-900 text-white px-4 hover:pr-6 py-2 mt-4 rounded'>See more</button>
                 </div>
                 <div className=' w-full h-full py-10'>
                     <img src='header-img.png' className='h-[500px] mx-auto'></img>
