@@ -18,7 +18,7 @@ export default function LandingPage() {
 
     
     return (
-        <div className='w-full h-full'>
+        <div className='w-full h-full bg-slate-100 text-black'>
             {/* ini bagian navbar */}
             <motion.nav
             variants={fadeIn("down", 0.3)}
@@ -44,13 +44,13 @@ export default function LandingPage() {
                     initial={"hidden"}
                     whileInView={"show"}
                     viewport={{once:true, amount:0.1}}
-                    className=' text-3xl md:text-4xl font-bold'>Temukan Gaya dan Ekspresikan Dirimu!</motion.h1>
+                    className=' text-3xl md:text-4xl font-bold text-black'>Temukan Gaya dan Ekspresikan Dirimu!</motion.h1>
                     <motion.h2
                     variants={fadeIn("up", 0.4)}
                     initial={"hidden"}
                     whileInView={"show"}
                     viewport={{once:true, amount:0.1}}
-                    className=' text-sm md:text-lg mt-2'>Beragam pilihan fashion terkini yang sesuai dengan kepribadianmu. Jadilah dirimu yang terbaik setiap hari!</motion.h2>
+                    className=' text-sm md:text-lg mt-2 text-black'>Beragam pilihan fashion terkini yang sesuai dengan kepribadianmu. Jadilah dirimu yang terbaik setiap hari!</motion.h2>
                     <motion.button onClick={() => router.push('/catalog')} 
                     variants={fadeIn("right", 0.3)}
                     initial={"hidden"}

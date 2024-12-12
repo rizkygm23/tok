@@ -70,7 +70,7 @@ export default function ProductCard({ product, delay,  }) {
       initial={"hidden"}
       whileInView={"show"}
       viewport={{ once: true, amount: 0.01 }}
-      className="border   shadow-md rounded-[16px] overflow-hidden "
+      className="border   shadow-md rounded-[16px] overflow-hidden text-black "
     >
       <img
         src={product.image_url}
