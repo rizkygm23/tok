@@ -94,10 +94,6 @@ export default function HomePage() {
             )}
           </div>
 
-          {/* Kebijakan */}
-          
-
-          {/* FAQ */}
           
         </nav>
       </div>
@@ -115,7 +111,7 @@ export default function HomePage() {
               placeholder="Search product..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="col-span-4 p-3 border border-gray-300 rounded-md focus:outline-none"
+              className="col-span-4 p-3 border text-black border-gray-300 rounded-md focus:outline-none"
             />
             <button
               type="submit"
@@ -128,7 +124,7 @@ export default function HomePage() {
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 max-w-screen-lg mx-auto mt-4 sm:px-7">
           {/* Product List */}
-          <h1 className="text-2xl font-bold mb-4 col-span-2 sm:col-span-3 md:col-span-4 lg:col-span-5">
+          <h1 className="text-2xl font-bold mb-4 col-span-2 text-black sm:col-span-3 md:col-span-4 lg:col-span-5">
             {activeCategory ? `Category: ${activeCategory}` : 'All Product'}
           </h1>
           <form
@@ -140,7 +136,7 @@ export default function HomePage() {
               placeholder="Search product..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="col-span-3 lg:col-span-4 p-2 border border-gray-300 rounded-2xl focus:outline-none"
+              className="col-span-3 lg:col-span-4 p-2 text-black border border-gray-300 rounded-2xl focus:outline-none"
             />
             <button
               type="submit"
