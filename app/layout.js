@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
     scroll-behavior="smooth"
     >
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased  `}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-200 `}
       >
         {children}
       </body>

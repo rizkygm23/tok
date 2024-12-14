@@ -23,8 +23,8 @@ export default function CardBigSale({ id, nama, price, image_url, delay }) {
         <h1 className=" text-[8px] md:text-lg text-center font-semibold line-clamp-2 mt-3 text-black">
           {nama}
         </h1>
-        <h1 className="text-sm md:text-2xl font-bold mt-2 grid grid-cols-1 md:flex text-black">
-          <span className="line-through text-[10px] md:text-sm text-red-700 italic mx-1">
+        <h1 className="text-sm lg:text-2xl font-bold mt-2 grid grid-cols-1 md:flex text-black">
+          <span className="line-through text-[10px] lg:text-sm text-red-700 italic mx-1">
             {formatRupiah(price * 1.5)}
           </span>
           {formatRupiah(price)}

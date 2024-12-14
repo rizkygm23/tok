@@ -109,7 +109,7 @@ export default function DetailPage() {
   };
 
   return (
-    <div className="container mx-auto lg:p-44 bg-slate-200 text-black">
+    <div className=" lg:p-44 bg-slate-200 text-black">
       <div className='w-full hidden md:block h-fit  top-10 left-10 sticky rounded-full  p-2 '>
         <img onClick={() => router.push('/catalog')} alt={product.name} src='back-icon.png' className='w-12 h-12 bg-slate-100 hover:bg-slate-200 p-4 rounded-full' ></img>
       </div>
