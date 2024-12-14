@@ -12,11 +12,10 @@ import Header from "@/components/navbar";
 const delay = 0.3;
 import Footer from "@/components/Footer";
 
-
 export default function LandingPage() {
   return (
     <div className="w-full h-full bg-slate-100 text-black">
-        <Header />
+      <Header />
       {/* ini bagian Header */}
       <div className="w-full h-fit  grid grid-cols-1 md:grid-cols-2 mt-20 px-5 md:px-24 lg:px-52">
         <div className="item-center w-full h-fit py-10 my-auto px-4">
@@ -62,7 +61,10 @@ export default function LandingPage() {
       </div>
 
       {/* ini bagian Bigsale */}
-      <div id="bigsale" className="bg-gradient-to-b from-[#374957] to-slate-100 pt-3  pb-10 md:pb-20 lg:mx-24 rounded-xl">
+      <div
+        id="bigsale"
+        className="bg-gradient-to-b from-[#374957] to-slate-100 pt-3  pb-10 md:pb-20 lg:mx-24 rounded-xl"
+      >
         <h1 className=" bg-slate-100 text-md md:text-4xl font-bold py-3 px-8 text-center rounded-tl-xl rounded-br-xl text-[#374957] w-fit mx-auto ">
           Big Sale
         </h1>
@@ -83,7 +85,7 @@ export default function LandingPage() {
 
       {/* ini bagian Best seller */}
       <div id="bestseller">
-      <h1 className=" bg-slate-100 text-md md:text-4xl font-bold py-3 px-8 text-center text-[#374957]  w-fit mx-auto ">
+        <h1 className=" bg-slate-100 text-md md:text-4xl font-bold py-3 px-8 text-center text-[#374957]  w-fit mx-auto ">
           Best Seller
         </h1>
         <div className="grid grid-cols-1 gap-4 mt-10 px-5 md:px-24 lg:px-52">
@@ -137,15 +139,16 @@ export default function LandingPage() {
         initial={"hidden"}
         whileInView={"show"}
         viewport={{ once: true, amount: 0.1 }}
-        onClick={() => router.push("/catalog")}
-        id="preview"
         className="relative w-full h-full p-5 md:p-52"
       >
-        <img
-          src="preview.png"
-          className="w-full h-full object-cover rounded-2xl shadow-lg border border-[#374957] border-solid transition duration-100 ease-in-out blur-sm hover:blur-none"
+        <video
+          src="/preview.mp4"
+          className="w-full h-full object-cover rounded-2xl shadow-lg border border-[#374957] border-solid transition duration-100 ease-in-out md:blur-sm hover:blur-none"
+          autoPlay
+          loop
+          muted
+          playsInline
         />
-        {/* Tombol di tengah */}
         <button
           onClick={() => router.push("/catalog")}
           className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#374957] z-20 text-white px-4 py-2 rounded-lg opacity-0 hover:opacity-100 transition duration-300 ease-in-out"
@@ -154,8 +157,10 @@ export default function LandingPage() {
         </button>
       </motion.div>
 
+      
+
       <Footer />
-{/* 
+      {/* 
       <div
         id="footer"
         className="mt-20 w-full h-fit bg-[#374957] grid grid-cols-1 "
@@ -164,7 +169,6 @@ export default function LandingPage() {
           Copyright &copy; 2024. All rights reserved.
         </p>
       </div> */}
-      
     </div>
   );
 }
