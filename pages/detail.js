@@ -139,7 +139,7 @@ export default function DetailPage() {
       </div>
       <div className="fixed bottom-0 right-0 grid grid-cols-5 w-full md:hidden">
         <button
-          onClick={() => router.back()}
+          onClick={() => router.push('/catalog')}
           className="bg-white border-2 border-[#374957] text-[#374957] col-span-2 py-4"
         >
           Back
