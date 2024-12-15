@@ -26,17 +26,17 @@ const Header = () => {
         >
         <nav>
           <ul className="md:flex items-center justify-between text-base text-gray-700 pt-4 md:pt-0">
-            <li>
-              <a className="md:p-4 py-3 px-0 block" href="#bigsale">
+            <li className="hover:underline hover:bg-[#374957] hover:text-white rounded-full w-fit px-3">
+              <a className="md:p-4 py-2 px-0 block" href="#bigsale">
                 BigSale
               </a>
             </li>
-            <li>
+            <li className="hover:underline hover:bg-[#374957] hover:text-white rounded-full w-fit px-3">
               <a className="md:p-4 py-3 px-0 block" href="#bestseller">
                 Best Seller
               </a>
             </li>
-            <li>
+            <li className="hover:underline hover:bg-[#374957] hover:text-white rounded-full w-fit px-3">
               <a className="md:p-4 py-3 px-0 block" href="#preview">
                 Preview
               </a>

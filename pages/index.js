@@ -63,7 +63,7 @@ export default function LandingPage() {
       {/* ini bagian Bigsale */}
       <div
         id="bigsale"
-        className="bg-gradient-to-b from-[#374957] to-slate-100 pt-3  pb-10 md:pb-20 lg:mx-24 rounded-xl"
+        className="md:pt-24 bg-gradient-to-b from-[#374957] to-slate-100 pt-3  pb-10 md:pb-20 lg:mx-24 rounded-xl"
       >
         <h1 className=" bg-slate-100 text-md md:text-4xl font-bold py-3 px-8 text-center rounded-tl-xl rounded-br-xl text-[#374957] w-fit mx-auto ">
           Big Sale
@@ -84,7 +84,7 @@ export default function LandingPage() {
       </div>
 
       {/* ini bagian Best seller */}
-      <div id="bestseller">
+      <div id="bestseller" className="md:pt-24">
         <h1 className=" bg-slate-100 text-md md:text-4xl font-bold py-3 px-8 text-center text-[#374957]  w-fit mx-auto ">
           Best Seller
         </h1>
@@ -135,16 +135,17 @@ export default function LandingPage() {
         </div>
       </div>
       <motion.div
+        id="preview"
         variants={fadeIn("up", 0.3)}
         initial={"hidden"}
         whileInView={"show"}
         viewport={{ once: true, amount: 0.1 }}
-        className="relative w-full h-full p-5 md:p-52"
+        className="relative w-full h-full p-5 md:p-52 "
       >
         <video
-        id="preview"
+        
           src="/preview.mp4"
-          className="w-full h-full object-cover rounded-2xl shadow-lg border border-[#374957] border-solid transition duration-100 ease-in-out md:blur-sm hover:blur-none"
+          className="w-full h-full  object-cover rounded-2xl shadow-lg border border-[#374957] border-solid transition duration-100 ease-in-out md:blur-sm hover:blur-none"
           autoPlay
           loop
           muted
