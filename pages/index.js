@@ -143,9 +143,10 @@ export default function LandingPage() {
         className="relative w-full h-full p-5 md:p-52 "
       >
         <video
+          onClick={() => router.push("/catalog")}
         
           src="/preview.mp4"
-          className="w-full h-full  object-cover rounded-2xl shadow-lg border border-[#374957] border-solid transition duration-100 ease-in-out md:blur-sm hover:blur-none"
+          className="w-full h-full  object-cover rounded-2xl  shadow-lg border border-[#374957] border-solid transition duration-100 ease-in-out md:blur-sm hover:blur-none"
           autoPlay
           loop
           muted
